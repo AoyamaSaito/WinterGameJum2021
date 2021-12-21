@@ -9,7 +9,7 @@ public class SledManager : MonoBehaviour
     [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = default;
     [SerializeField, Header("到着地点")] Vector2 arrival = default; //到着場所
     private bool _start = false;
-    private float arrivaltime = 0f;
+    private float arrivaltime = 1f;
     private float distancetime = 0f;
     public float Speed = 0f;
     private float time = 0f;
