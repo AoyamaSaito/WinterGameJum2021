@@ -8,7 +8,8 @@ public class CannonManager : MonoBehaviour
     bool _setup = true;
     bool _entered = false;
     GameObject present = default;
-    [SerializeField] Vector2 shot = default;
+    [SerializeField, Header("力の加える方向")] Vector2 shot = default;
+    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = default;
     float time = 0;
 
     // Update is called once per frame
@@ -27,16 +28,18 @@ public class CannonManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.tag == "")
-        //{
+        if (collision.tag == triggerTag)
+        {
             if (_setup)
             {
                 present = collision.gameObject;
                 collision.gameObject.SetActive(false);
+                collision.GetComponent<Rigidbody2D>().gravityScale = 0;
+                collision.transform.position = gameObject.transform.position;
                 _entered = true;
                 _setup = false;
             }
-        //}
+        }
     }
 
     void Canon()
@@ -44,9 +47,9 @@ public class CannonManager : MonoBehaviour
         time += Time.deltaTime;
         if (time > 3 && time < 4)
         {
-            GameObject newPresent = Instantiate(present, gameObject.transform.position, Quaternion.Inverse(this.transform.rotation));
-            newPresent.SetActive(true);
-            newPresent.GetComponent<Rigidbody2D>().AddForce(shot * 10);
+            present.SetActive(true);
+            present.GetComponent<Rigidbody2D>().gravityScale = 1; 
+            present.GetComponent<Rigidbody2D>().AddForce(shot * 10);
             _entered = false;
         }
     }
