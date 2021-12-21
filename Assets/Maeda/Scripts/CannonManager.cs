@@ -14,11 +14,11 @@ public class CannonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_entered) 
+        if (_entered)
         {
             Canon();
         }
-        else if(time > 4)
+        else if (time > 4)
         {
             _setup = true;
             time = 0;
@@ -27,21 +27,24 @@ public class CannonManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_setup)
-        {
-            present = collision.gameObject;
-            collision.gameObject.SetActive(false);
-            _entered = true;
-            _setup = false;
-        }
+        //if (collision.tag == "")
+        //{
+            if (_setup)
+            {
+                present = collision.gameObject;
+                collision.gameObject.SetActive(false);
+                _entered = true;
+                _setup = false;
+            }
+        //}
     }
 
-    void Canon() 
+    void Canon()
     {
         time += Time.deltaTime;
-        if(time > 3 && time < 4) 
+        if (time > 3 && time < 4)
         {
-            GameObject newPresent = Instantiate(present,gameObject.transform.position, Quaternion.Inverse(this.transform.rotation));
+            GameObject newPresent = Instantiate(present, gameObject.transform.position, Quaternion.Inverse(this.transform.rotation));
             newPresent.SetActive(true);
             newPresent.GetComponent<Rigidbody2D>().AddForce(shot * 10);
             _entered = false;

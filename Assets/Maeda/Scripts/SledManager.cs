@@ -31,8 +31,11 @@ public class SledManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _start = true;
-        collision.transform.parent = this.transform.transform; //プレゼントを子オブジェクトに追加する
+        //if (collision.tag == "")
+        //{
+            _start = true;
+            collision.transform.parent = this.transform.transform; //プレゼントを子オブジェクトに追加する
+        //}
     }
 
     void Larp() 
