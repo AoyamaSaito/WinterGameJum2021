@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemBase : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ItemBase : MonoBehaviour
 
     private int Score => _score;
 
-    public int _score = default;
+    private int _score = default;
 
     bool _isFirst = default;
     void Start()

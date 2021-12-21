@@ -11,10 +11,12 @@ public class SceneChanger : MonoBehaviour
     [SerializeField, Header("切り替えたいシーン名")] string _sceneName = default;
     [SerializeField, Header("テキストを表示する時間（ミリ秒）")] int _textDelay = default;
     [SerializeField, Header("接触したときに行動を起こすタグ")] string _triggerTag = default;
+    AudioSource _audioSource;
 
     void Start()
     {
         _text.enabled = false;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,7 +32,8 @@ public class SceneChanger : MonoBehaviour
             _text.enabled = true;
             await Task.Delay(_textDelay);
         }
-            SceneManager.LoadScene(_sceneName);
+        _audioSource.Play();
+        SceneManager.LoadScene(_sceneName);
     }
 
     public void OnClick()
