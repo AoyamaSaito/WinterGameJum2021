@@ -6,10 +6,11 @@ using UnityEngine.Events;
 public class SledManager : MonoBehaviour
 {
     //[SerializeField] UnityEvent StartSled = null;
-    [SerializeField] Vector2 arrival = default; //到着場所
+    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = default;
+    [SerializeField, Header("到着地点")] Vector2 arrival = default; //到着場所
     private bool _start = false;
-    public float arrivaltime = 0f;
-    public float distancetime = 0f;
+    private float arrivaltime = 0f;
+    private float distancetime = 0f;
     public float Speed = 0f;
     private float time = 0f;
 
@@ -31,11 +32,11 @@ public class SledManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.tag == "")
-        //{
+        if (collision.tag == triggerTag)
+        {
             _start = true;
             collision.transform.parent = this.transform.transform; //プレゼントを子オブジェクトに追加する
-        //}
+        }
     }
 
     void Larp() 
