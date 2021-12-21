@@ -33,6 +33,8 @@ public class CannonManager : MonoBehaviour
             {
                 present = collision.gameObject;
                 collision.gameObject.SetActive(false);
+                collision.GetComponent<Rigidbody2D>().gravityScale = 0;
+                collision.transform.position = gameObject.transform.position;
                 _entered = true;
                 _setup = false;
             }
@@ -44,9 +46,9 @@ public class CannonManager : MonoBehaviour
         time += Time.deltaTime;
         if (time > 3 && time < 4)
         {
-            GameObject newPresent = Instantiate(present, gameObject.transform.position, Quaternion.Inverse(this.transform.rotation));
-            newPresent.SetActive(true);
-            newPresent.GetComponent<Rigidbody2D>().AddForce(shot * 10);
+            present.SetActive(true);
+            present.GetComponent<Rigidbody2D>().gravityScale = 1; 
+            present.GetComponent<Rigidbody2D>().AddForce(shot * 10);
             _entered = false;
         }
     }
