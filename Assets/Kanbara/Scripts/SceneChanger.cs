@@ -9,8 +9,10 @@ public class SceneChanger : MonoBehaviour
     [SerializeField, Header("接触したときに行動を起こすタグ")] string _triggerTag = default;
     [SerializeField, Header("表示するパネル(クリア)")] GameObject _clearPanel;
     [SerializeField, Header("表示するパネル(ゲームオーバー)")] GameObject _gameOverPanel;
-    [SerializeField, Header("")] Bulletlife _bulletLife = default;
+    [SerializeField] Bulletlife _bulletLife = default;
+    [SerializeField] string _clearAnimation = default;
 
+    Animator _ani;
     AudioSource _audioSource;
 
     void Start()
@@ -18,6 +20,7 @@ public class SceneChanger : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _clearPanel.SetActive(false);
         _gameOverPanel.SetActive(false);
+        _ani = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,6 +32,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.tag != _triggerTag) return;
         _audioSource.Play();
+        _ani.Play(_clearAnimation);
         _bulletLife._isNotPlayGame = true;
         Debug.Log("true");
         _clearPanel.SetActive(true);
