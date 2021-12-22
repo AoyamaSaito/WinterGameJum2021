@@ -20,7 +20,6 @@ public class SceneChanger : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _clearPanel.SetActive(false);
         _gameOverPanel.SetActive(false);
-        _ani = GetComponent<Animator>();
     }
 
     void Update()
@@ -32,8 +31,12 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.tag != _triggerTag) return;
         _audioSource.Play();
-        _ani.Play(_clearAnimation);
-        _bulletLife._isNotPlayGame = true;
+        if (_ani)
+        {
+            GetComponent<Animator>();
+            _ani.Play(_clearAnimation);
+        }
+            _bulletLife._isNotPlayGame = true;
         Debug.Log("true");
         _clearPanel.SetActive(true);
         //SceneManager.LoadScene(_sceneName);

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerTag: Player
   arrival: {x: -7.6, y: 0}
-  Speed: 0.03
+  Speed: 0.01
 --- !u!61 &4491049059457851090
 BoxCollider2D:
   m_ObjectHideFlags: 0
