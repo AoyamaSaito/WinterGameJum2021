@@ -9,7 +9,7 @@ public class CannonManager : MonoBehaviour
     bool _entered = false;
     GameObject present = default;
     [SerializeField, Header("力の加える方向")] Vector2 shot = default;
-    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = default;
+    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = "Player";
     float time = 0;
 
     // Update is called once per frame
