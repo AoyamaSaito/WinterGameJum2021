@@ -461,11 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc30f40cfcaaab46b183f38ef6a03cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneName: 
+  _triggerTag: 
+  _textLife: {fileID: 0}
+  _bulletObj: {fileID: 0}
+  instantiatePosition: {fileID: 0}
   life: 3
-  PresentPrefab: {fileID: 0}
-  parentTran: {fileID: 1571388776}
-  PresentImage: {fileID: 8766759465495318975, guid: 17f4e5dd936688648a7f496f952988ab,
-    type: 3}
 --- !u!114 &1571388773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,7 +784,7 @@ PrefabInstance:
     - target: {fileID: 5698353495335616774, guid: 9cd5c5775fc70034c879d65831f37975,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 335
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 5698353495335616774, guid: 9cd5c5775fc70034c879d65831f37975,
         type: 3}
@@ -907,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 6303885259563008549, guid: 4e2bb473adba8a5499a179a16c3b1c28,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 335
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 6303885259563008549, guid: 4e2bb473adba8a5499a179a16c3b1c28,
         type: 3}
