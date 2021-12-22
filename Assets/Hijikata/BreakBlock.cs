@@ -9,6 +9,7 @@ public class BreakBlock : MonoBehaviour
     /// <summary>Blockが壊れるまでの回数</summary>
     [SerializeField] int _breakCount = 3;
     [SerializeField] float _intervalTime = 1f;
+    [SerializeField] GameObject _particle = default;
     bool _breakInterval = false;
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -32,7 +33,15 @@ public class BreakBlock : MonoBehaviour
             StartCoroutine(Interval());
             _breakCount--;
 
-            if (_breakCount <= 0) Destroy(this.gameObject);
+            if (_breakCount <= 0)
+            {
+                if (_particle)
+                {
+                    Instantiate(_particle, this.transform.position, Quaternion.identity);
+                }
+                Destroy(this.gameObject);
+
+            }
         }
     }
 
@@ -45,7 +54,15 @@ public class BreakBlock : MonoBehaviour
             StartCoroutine(Interval());
             _breakCount--;
 
-            if (_breakCount <= 0) Destroy(this.gameObject);
+            if (_breakCount <= 0)
+            {
+                if (_particle)
+                {
+                    Instantiate(_particle, this.transform.position, Quaternion.identity);
+                }
+                Destroy(this.gameObject);
+
+            }
         }
     }
 
@@ -58,7 +75,15 @@ public class BreakBlock : MonoBehaviour
             StartCoroutine(Interval());
             _breakCount--;
 
-            if (_breakCount <= 0) Destroy(this.gameObject);
+            if (_breakCount <= 0)
+            {
+                if(_particle)
+                {
+                    Instantiate(_particle, this.transform.position, Quaternion.identity);
+                }
+                Destroy(this.gameObject);
+                
+            }
         }
     }
 
