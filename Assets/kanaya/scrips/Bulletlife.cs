@@ -10,17 +10,20 @@ public class Bulletlife : MonoBehaviour
     public GameObject PresentPrefab;
     public Transform parentTran;
     public GameObject PresentImage;
+
+    private bool inGame;
     // Start is called before the first frame update
     void Start()
     {
+        inGame = true;
         //life = 3;
-        textLife = GameObject.Find("PresentLife").GetComponent<Text>();
+        textLife = GameObject.Find("LifeText").GetComponent<Text>();
 
         SetLifeUI(life);
         GameObject Obj = (GameObject)Resources.Load("Present");
         GameObject obj = Instantiate(PresentImage, Vector2.zero, Quaternion.identity);
         obj.transform.SetParent(parentTran);
-        obj.transform.position = new Vector2(33.125f, 345f);
+        obj.transform.position = new Vector2(36.875f, 378.5f);
     }
 
     // Update is called once per frame
@@ -49,7 +52,6 @@ public class Bulletlife : MonoBehaviour
             else
             {
                 life = 0;
-
             }
         }
     }
