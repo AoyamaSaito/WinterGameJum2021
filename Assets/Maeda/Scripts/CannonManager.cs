@@ -5,21 +5,23 @@ using UnityEngine;
 public class CannonManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool _setup = true;
+    [SerializeField] bool _setup = true;
     bool _entered = false;
     GameObject present = default;
     [SerializeField, Header("力の加える方向")] Vector2 shot = default;
     [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = "Player";
+    [SerializeField] float shotTime = 2;
     float time = 0;
 
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         if (_entered)
         {
             Canon();
         }
-        else if (time > 4)
+        else if (time > shotTime + 1)
         {
             _setup = true;
             time = 0;
@@ -38,14 +40,14 @@ public class CannonManager : MonoBehaviour
                 collision.transform.position = gameObject.transform.position;
                 _entered = true;
                 _setup = false;
+                time = 0;
             }
         }
     }
 
-    void Canon()
-    {
-        time += Time.deltaTime;
-        if (time > 3 && time < 4)
+    void Canon() 
+    { 
+        if (time > shotTime && time < shotTime+1)
         {
             present.SetActive(true);
             present.GetComponent<Rigidbody2D>().gravityScale = 1; 

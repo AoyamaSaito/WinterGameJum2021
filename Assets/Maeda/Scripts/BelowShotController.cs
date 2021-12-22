@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class BelowShotController : MonoBehaviour
 {
@@ -11,26 +13,62 @@ public class BelowShotController : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] GameObject[] destroys;
     [SerializeField] bool isShot = false;
+    Bulletlife bulletLife;
+    [SerializeField, Header("ブロックに当たった時の処理")] UnityEvent blockEvent;
     [SerializeField] bool isBelow = false;
-    [SerializeField , Header("スペースを押した後の重力値")] int newGravity = 0;
+    [SerializeField] int newGravity = 3;
+
+    GameObject Obj;
 
     Rigidbody2D rb;
 
+    Vector3 _nowTransform = new Vector3(0, 0, 0);
+
+    float _time = 0;
+
+    CinemachineVirtualCamera _nearCamera;
+    CinemachineVirtualCamera _farCamera;
     void Start()
     {
+        _nearCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        _farCamera = GameObject.Find("CM vcam2").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
+        Obj = GameObject.Find("Present");
+        bulletLife = GameObject.Find("BulletManager").GetComponent<Bulletlife>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && isShot == true)
+        if (Input.GetButtonDown("Fire1") && isShot)
         {
             Shot();
         }
 
-        if(Input.GetButtonDown("Jump") && isBelow) 
+        if (Input.GetButtonDown("Jump") && isBelow)
         {
             Below();
+        }
+
+        _time += Time.deltaTime;
+
+        if (_time >= 1 && !isShot)
+        {
+            if (_nowTransform == gameObject.transform.position)
+            {
+                MineDestroy();
+            }
+            _nowTransform = gameObject.transform.position;
+            _time = 0;
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            collision.gameObject.GetComponent<BreakBlock>()?.PlayerAttackBlock();
+            MineDestroy();
         }
     }
 
@@ -49,10 +87,17 @@ public class BelowShotController : MonoBehaviour
         isShot = true;
     }
 
-    void Below() 
+    void Below()
     {
         isBelow = false;
         rb.velocity = Vector3.zero;
         rb.gravityScale = newGravity;
+    }
+
+    void MineDestroy()
+    {
+        bulletLife.Present();
+        _nearCamera.MoveToTopOfPrioritySubqueue();
+        Destroy(gameObject);
     }
 }

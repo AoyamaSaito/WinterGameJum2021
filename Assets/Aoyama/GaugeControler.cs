@@ -17,6 +17,9 @@ public class GaugeControler : MonoBehaviour
 
     [SerializeField] float moveSpeed = 1.1f;
     [SerializeField] ShotControler sc;
+    [SerializeField] BombShotController bosc;
+    [SerializeField] BelowShotController besc;
+
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -80,7 +83,18 @@ public class GaugeControler : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
            isMove  = false;
-            sc.enabled = true;
+            if(sc != null) 
+            {
+                sc.enabled = true;
+            } 
+            else if(bosc != null) 
+            {
+                bosc.enabled = true;
+            }
+            else if(besc != null) 
+            {
+                besc.enabled = true;
+            }
         }
     }
 

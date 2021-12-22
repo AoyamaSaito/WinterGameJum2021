@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class BombShotController : MonoBehaviour
 {
@@ -14,11 +16,26 @@ public class BombShotController : MonoBehaviour
     [SerializeField] List<GameObject> BlockList = new List<GameObject>();
     [SerializeField, Header("爆発したとき与える速度")] float speed = 0;
     [SerializeField] bool isBomb = false;
+    Bulletlife bulletLife;
+    [SerializeField, Header("ブロックに当たった時の処理")] UnityEvent blockEvent;
+    GameObject Obj;
+
     Rigidbody2D rb;
+
+    Vector3 _nowTransform = new Vector3(0, 0, 0);
+
+    float _time = 0;
+
+    CinemachineVirtualCamera _nearCamera;
+    CinemachineVirtualCamera _farCamera;
 
     void Start()
     {
+        _nearCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        _farCamera = GameObject.Find("CM vcam2").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
+        Obj = GameObject.Find("Present");
+        bulletLife = GameObject.Find("BulletManager").GetComponent<Bulletlife>();
     }
 
     void Update()
@@ -30,6 +47,18 @@ public class BombShotController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isBomb)
         {
             Bomb();
+        }
+
+        _time += Time.deltaTime;
+
+        if (_time >= 1 && !isShot)
+        {
+            if (_nowTransform == gameObject.transform.position)
+            {
+                MineDestroy();
+            }
+            _nowTransform = gameObject.transform.position;
+            _time = 0;
         }
     }
 
@@ -64,6 +93,15 @@ public class BombShotController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            collision.gameObject.GetComponent<BreakBlock>()?.PlayerAttackBlock();
+            MineDestroy();
+        }
+    }
+
     void Bomb()
     {
         for (int i = 0; i < BlockList.Count; i++)
@@ -79,5 +117,12 @@ public class BombShotController : MonoBehaviour
             _rb.gravityScale = 1;
         }
         isBomb = false;
+    }
+
+    void MineDestroy()
+    {
+        bulletLife.Present();
+        _nearCamera.MoveToTopOfPrioritySubqueue();
+        Destroy(gameObject);
     }
 }

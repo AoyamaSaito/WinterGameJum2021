@@ -35,6 +35,7 @@ public class SledManager : MonoBehaviour
         if (collision.tag == triggerTag)
         {
             _start = true;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.transform.parent = this.transform.transform; //プレゼントを子オブジェクトに追加する
         }
     }
