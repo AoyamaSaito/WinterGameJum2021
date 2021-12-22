@@ -22,6 +22,7 @@ public class GaugeControler : MonoBehaviour
         slider = GetComponent<Slider>();
         dwonRimit = slider.minValue;
         upRimit = slider.maxValue;
+        counter = slider.value; 
 
         isUp = true;
         isDown = false;

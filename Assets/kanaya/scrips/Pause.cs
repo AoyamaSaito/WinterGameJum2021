@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    public Text Pausetext;
-    public GameObject PausePanel;
+    [SerializeField] Text Pausetext;
+    [SerializeField] GameObject PausePanel;
     private bool inGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,16 @@ public class Pause : MonoBehaviour
         PausePanel.SetActive(true);
         Pausetext.enabled = true;
     }
-    public void Back()
+    public void Back() //ポーズ画面を閉じる
     {
         inGame = true;   //すぐに始まってしまう
         PausePanel.SetActive(false);
     }
-    public void Retry()
+    public void Retry() //やり直す
     {
-
+        
     }
-    public void Retire()
+    public void Retire()　//諦める
     {
 
     }
