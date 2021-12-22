@@ -9,6 +9,8 @@ public class Bulletlife : SceneChanger
     [SerializeField, Header("Buletを入れるメンバ変数")] GameObject _bulletObj = default;
     [SerializeField, Header("弾を生成するposition")] Transform instantiatePosition;
 
+    public bool _isNotPlayGame = default;
+
     public int life;
 
     //public GameObject PresentPrefab;
@@ -48,12 +50,14 @@ public class Bulletlife : SceneChanger
             SetLifeUI(life);
             if (life > 0)
             {
+                if (_isNotPlayGame) return;
                 GameObject newball = Instantiate(_bulletObj, instantiatePosition.position, Quaternion.identity);
+                Debug.Log(_isNotPlayGame);
                 //newball.name = PresentPrefab.name;
             }
             else
             {
-                OnClick();
+                GameOver();
             }
         }
     }
