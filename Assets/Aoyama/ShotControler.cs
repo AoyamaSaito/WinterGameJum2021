@@ -17,7 +17,7 @@ public class ShotControler : MonoBehaviour
     [SerializeField, Header("ブロックに当たった時の処理")] UnityEvent blockEvent;
 
     GameObject Obj;
-
+    Animator ani;
     Rigidbody2D rb;
 
     Vector3 _nowTransform = new Vector3(0,0,0);
@@ -33,6 +33,8 @@ public class ShotControler : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Obj = GameObject.Find("Present");
         bulletLife = GameObject.Find("BulletManager").GetComponent<Bulletlife>();
+        ani = GameObject.Find("Player").GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -67,11 +69,13 @@ public class ShotControler : MonoBehaviour
 
     void Shot()
     {
+        ani.SetBool("bool", true);
         shotPower *= slider.value;
         Vector2 shotDirection = muzzle.position - gameObject.transform.position;
         rb.AddForce(shotDirection.normalized * shotPower, ForceMode2D.Impulse);
         _farCamera.MoveToTopOfPrioritySubqueue();
-        Array.ForEach(destroys, go => Destroy(go));
+        Array.ForEach(destroys, go => Destroy(go));  
+        StartCoroutine(Animation1());
         isShot = false;
     }
 
@@ -85,5 +89,11 @@ public class ShotControler : MonoBehaviour
         bulletLife.Present();
         _nearCamera.MoveToTopOfPrioritySubqueue();
         Destroy(gameObject);
+    }
+
+    IEnumerator Animation1()
+    {
+        yield return new WaitForSeconds(1);
+        ani.SetBool("bool", false);
     }
 }
