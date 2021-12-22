@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class SledManager : MonoBehaviour
 {
     //[SerializeField] UnityEvent StartSled = null;
-    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = default;
+    [SerializeField, Header("接触したとき反応するタグ")] string triggerTag = "Player";
     [SerializeField, Header("到着地点")] Vector2 arrival = default; //到着場所
     private bool _start = false;
     private float arrivaltime = 1f;
