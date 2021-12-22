@@ -691,6 +691,7 @@ MonoBehaviour:
   _clearPanel: {fileID: 759873411}
   _gameOverPanel: {fileID: 759873411}
   _bulletLife: {fileID: 0}
+  _clearAnimation: 
 --- !u!114 &665278572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,11 +1224,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1d61f5f60e363438970bafbfae5d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Stage1
+  _sceneName: HIjikataaaaaa
   _triggerTag: 
   _clearPanel: {fileID: 759873411}
   _gameOverPanel: {fileID: 759873411}
   _bulletLife: {fileID: 0}
+  _clearAnimation: 
 --- !u!114 &1823245122
 MonoBehaviour:
   m_ObjectHideFlags: 0

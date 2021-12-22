@@ -342,6 +342,7 @@ MonoBehaviour:
   _clearPanel: {fileID: 213134311}
   _gameOverPanel: {fileID: 1401189675}
   _bulletLife: {fileID: 915113165}
+  _clearAnimation: 
 --- !u!212 &90843284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1656,6 +1657,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverScene
       objectReference: {fileID: 0}
+    - target: {fileID: 8784987406029590008, guid: 376db316da474714ea225e64a57ea1ff,
+        type: 3}
+      propertyPath: _sceneName
+      value: SaitoScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 376db316da474714ea225e64a57ea1ff, type: 3}
 --- !u!1 &596217456
@@ -2592,6 +2598,7 @@ MonoBehaviour:
   _clearPanel: {fileID: 213134311}
   _gameOverPanel: {fileID: 1401189675}
   _bulletLife: {fileID: 915113165}
+  _clearAnimation: 
   _textLife: {fileID: 539123459}
   _bulletObj: {fileID: 801116333145644938, guid: 1aa3315cd2f69354aafbe8e2fd139f4c,
     type: 3}
@@ -3959,6 +3966,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 51967037}
     m_Modifications:
+    - target: {fileID: 1815536791, guid: b6627a8b78ce1154ab2ac322a044e75c, type: 3}
+      propertyPath: _sceneName
+      value: SaitoScene 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1815536792, guid: b6627a8b78ce1154ab2ac322a044e75c, type: 3}
+      propertyPath: _sceneName
+      value: SaitoScene
+      objectReference: {fileID: 0}
     - target: {fileID: 1078727188830797233, guid: b6627a8b78ce1154ab2ac322a044e75c,
         type: 3}
       propertyPath: m_Pivot.x

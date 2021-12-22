@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7760206048775747509}
   - component: {fileID: 7197218972680731486}
   - component: {fileID: 1313633207775793477}
+  - component: {fileID: 8784987406029590008}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Retire
+      - m_Target: {fileID: 8784987406029590008}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -145,6 +146,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &8784987406029590008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426947351542080787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1d61f5f60e363438970bafbfae5d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: Hijikataaaaaa
+  _triggerTag: 
+  _clearPanel: {fileID: 0}
+  _gameOverPanel: {fileID: 0}
+  _bulletLife: {fileID: 0}
+  _clearAnimation: 
 --- !u!1 &565213419963810511
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +263,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523069305047840060}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -310,6 +329,7 @@ GameObject:
   - component: {fileID: 7781754853358493028}
   - component: {fileID: 4274755508340368407}
   - component: {fileID: 877877079045717312}
+  - component: {fileID: 8381488255687205457}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -416,8 +436,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Back
+      - m_Target: {fileID: 8381488255687205457}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -442,6 +462,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &8381488255687205457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186180445130197200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1d61f5f60e363438970bafbfae5d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: Title
+  _triggerTag: 
+  _clearPanel: {fileID: 0}
+  _gameOverPanel: {fileID: 0}
+  _bulletLife: {fileID: 0}
+  _clearAnimation: 
 --- !u!1 &8333433275591837454
 GameObject:
   m_ObjectHideFlags: 0

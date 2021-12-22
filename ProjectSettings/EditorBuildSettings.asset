@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Kanbara/SceneKanbara/Title.unity
+    guid: 18049fa2d9525e245a29683255288414
+  - enabled: 1
+    path: Assets/Hijikata/Scene/HIjikataaaaaa.unity
+    guid: 9687cc44b8239d84e837406ce226addf
+  - enabled: 1
+    path: Assets/Aoyama/SaitoScene.unity
+    guid: 5e22153b57e444543ab1e9de179b00bc
+  - enabled: 1
+    path: Assets/Aoyama/SaitoScene 1.unity
+    guid: c2bf76e86725db84a8f05e11dde04340
   m_configObjects: {}
